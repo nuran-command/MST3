@@ -1,7 +1,6 @@
 package com.carrental.model;
 
 import java.util.List;
-import com.carrental.model.Edge;
 
 public class MSTResult {
     private List<Edge> mstEdges;
@@ -16,7 +15,7 @@ public class MSTResult {
         this.executionTimeMs = executionTimeMs;
     }
 
-    // --- Getters used by tests ---
+    // --- Getters ---
     public List<Edge> getMstEdges() {
         return mstEdges;
     }
@@ -33,7 +32,13 @@ public class MSTResult {
         return executionTimeMs;
     }
 
-    // --- Setters (optional) ---
+    // --- Utility for summary display ---
+    public String summary() {
+        return String.format("Cost: %.2f | Time: %.3f ms | Operations: %d",
+                totalCost, executionTimeMs, operationsCount);
+    }
+
+    // --- Setters ---
     public void setMstEdges(List<Edge> mstEdges) {
         this.mstEdges = mstEdges;
     }

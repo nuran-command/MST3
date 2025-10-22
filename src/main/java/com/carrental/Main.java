@@ -42,8 +42,8 @@ public class Main {
         int index = 1;
 
         for (Graph g : graphs) {
-            System.out.println("\n--- Graph " + index + " (" + g.getVertices().size() + " vertices, "
-                    + g.getEdges().size() + " edges) ---");
+            System.out.println("\n--- Graph " + index + " (" + g.vertexCount() + " vertices, "
+                    + g.edgeCount() + " edges) ---");
 
             try {
                 MSTResult primRes = prim.run(g);
@@ -52,11 +52,8 @@ public class Main {
                 JSONObject graphResult = JSONWriter.createGraphResult(g, primRes, kruskalRes);
                 results.add(graphResult);
 
-                // Console summary
-                System.out.printf("Prim: cost=%.2f, time=%.3f ms, ops=%d%n",
-                        primRes.getTotalCost(), primRes.getExecutionTimeMs(), primRes.getOperationsCount());
-                System.out.printf("Kruskal: cost=%.2f, time=%.3f ms, ops=%d%n",
-                        kruskalRes.getTotalCost(), kruskalRes.getExecutionTimeMs(), kruskalRes.getOperationsCount());
+                System.out.println("Prim → " + primRes.summary());
+                System.out.println("Kruskal → " + kruskalRes.summary());
             } catch (Exception e) {
                 System.err.println("Error processing graph " + index + ": " + e.getMessage());
             }
