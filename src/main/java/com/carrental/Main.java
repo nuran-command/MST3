@@ -6,8 +6,8 @@ import com.carrental.algorithms.PrimMST;
 import com.carrental.algorithms.KruskalMST;
 import com.carrental.utils.JSONReader;
 import com.carrental.utils.JSONWriter;
+import com.carrental.utils.CSVWriter;
 import org.json.JSONObject;
-
 import java.util.*;
 
 public class Main {
@@ -38,7 +38,9 @@ public class Main {
         PrimMST prim = new PrimMST();
         KruskalMST kruskal = new KruskalMST();
 
-        List<JSONObject> results = new ArrayList<>();
+        List<JSONObject> jsonResults = new ArrayList<>();
+        List<MSTResult> primResults = new ArrayList<>();
+        List<MSTResult> kruskalResults = new ArrayList<>();
         int index = 1;
 
         for (Graph g : graphs) {
@@ -49,11 +51,15 @@ public class Main {
                 MSTResult primRes = prim.run(g);
                 MSTResult kruskalRes = kruskal.run(g);
 
+                primResults.add(primRes);
+                kruskalResults.add(kruskalRes);
+
                 JSONObject graphResult = JSONWriter.createGraphResult(g, primRes, kruskalRes);
-                results.add(graphResult);
+                jsonResults.add(graphResult);
 
                 System.out.println("Prim → " + primRes.summary());
                 System.out.println("Kruskal → " + kruskalRes.summary());
+
             } catch (Exception e) {
                 System.err.println("Error processing graph " + index + ": " + e.getMessage());
             }
@@ -61,13 +67,16 @@ public class Main {
             index++;
         }
 
-        // --- Save results ---
+        // --- Save JSON results ---
         try {
-            JSONWriter.writeResults(outputPath, results);
+            JSONWriter.writeResults(outputPath, jsonResults);
             System.out.println("\nMST results successfully written to " + outputPath);
         } catch (Exception e) {
             System.err.println("Error writing output file: " + e.getMessage());
         }
+
+        // --- Save CSV results ---
+        CSVWriter.writeResults("data/results.csv", graphs, primResults, kruskalResults);
 
         System.out.println("=== Processing Complete ===");
     }

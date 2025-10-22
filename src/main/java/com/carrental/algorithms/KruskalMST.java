@@ -56,6 +56,14 @@ public class KruskalMST {
 
         double totalCost = resultEdges.stream().mapToInt(Edge::getWeight).sum();
         double timeMs = (System.nanoTime() - start) / 1_000_000.0;
-        return new MSTResult(resultEdges, totalCost, (int) operations, timeMs);
+        return new MSTResult(
+                resultEdges,
+                totalCost,
+                (int) operations,
+                timeMs,
+                graph.getNodes().size(),
+                graph.getEdges().size(),
+                resultEdges.size() == graph.getNodes().size() - 1
+        );
     }
 }

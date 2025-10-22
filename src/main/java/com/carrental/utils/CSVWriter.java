@@ -11,20 +11,30 @@ public class CSVWriter {
                                     List<MSTResult> primResults,
                                     List<MSTResult> kruskalResults) {
         try (FileWriter writer = new FileWriter(filePath)) {
-            writer.write("GraphID,Vertices,Edges,Algorithm,TotalCost,Operations,ExecutionTimeMs\n");
+            writer.write("GraphID,Vertices,Edges,Connected,Algorithm,TotalCost,Operations,ExecutionTimeMs,CheaperAlgorithm,FasterAlgorithm\n");
 
             for (int i = 0; i < graphs.size(); i++) {
                 Graph g = graphs.get(i);
                 MSTResult prim = primResults.get(i);
                 MSTResult kruskal = kruskalResults.get(i);
 
-                writer.write(String.format("%d,%d,%d,Prim,%.2f,%d,%.3f\n",
-                        g.getId(), g.vertexCount(), g.edgeCount(),
-                        prim.getTotalCost(), prim.getOperationsCount(), prim.getExecutionTimeMs()));
+                // Comparison
+                String cheaper = prim.getTotalCost() < kruskal.getTotalCost() ? "Prim" :
+                        prim.getTotalCost() > kruskal.getTotalCost() ? "Kruskal" : "Equal";
+                String faster = prim.getExecutionTimeMs() < kruskal.getExecutionTimeMs() ? "Prim" :
+                        prim.getExecutionTimeMs() > kruskal.getExecutionTimeMs() ? "Kruskal" : "Equal";
 
-                writer.write(String.format("%d,%d,%d,Kruskal,%.2f,%d,%.3f\n",
-                        g.getId(), g.vertexCount(), g.edgeCount(),
-                        kruskal.getTotalCost(), kruskal.getOperationsCount(), kruskal.getExecutionTimeMs()));
+                // Prim
+                writer.write(String.format("%d,%d,%d,%b,Prim,%.2f,%d,%.3f,%s,%s\n",
+                        g.getId(), g.vertexCount(), g.edgeCount(), prim.isConnected(),
+                        prim.getTotalCost(), prim.getOperationsCount(), prim.getExecutionTimeMs(),
+                        cheaper, faster));
+
+                // Kruskal
+                writer.write(String.format("%d,%d,%d,%b,Kruskal,%.2f,%d,%.3f,%s,%s\n",
+                        g.getId(), g.vertexCount(), g.edgeCount(), kruskal.isConnected(),
+                        kruskal.getTotalCost(), kruskal.getOperationsCount(), kruskal.getExecutionTimeMs(),
+                        cheaper, faster));
             }
 
             System.out.println("CSV results written to " + filePath);
