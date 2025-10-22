@@ -2,8 +2,8 @@ package com.carrental.algorithms;
 
 import com.carrental.model.Edge;
 import com.carrental.model.Graph;
-import java.util.*;
 import com.carrental.model.MSTResult;
+import java.util.*;
 
 public class KruskalMST {
     private Map<String, String> parent = new HashMap<>();
@@ -54,8 +54,8 @@ public class KruskalMST {
             operations++;
         }
 
-        int totalCost = resultEdges.stream().mapToInt(Edge::getWeight).sum();
+        double totalCost = resultEdges.stream().mapToInt(Edge::getWeight).sum();
         double timeMs = (System.nanoTime() - start) / 1_000_000.0;
-        return new MSTResult(mstEdges, (double) totalCost, (int) operationsCount, (double) executionTimeMs);
+        return new MSTResult(resultEdges, totalCost, (int) operations, timeMs);
     }
 }
