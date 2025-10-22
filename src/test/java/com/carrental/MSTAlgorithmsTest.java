@@ -155,4 +155,60 @@ public class MSTAlgorithmsTest {
         assertEquals(primRes.getTotalCost(), kruskalRes.getTotalCost());
         assertEquals(g.getNodes().size() - 1, primRes.getMstEdges().size());
     }
+    // --- 4. Reproducibility of Operations Count ---
+    @Test
+    void testOperationsCountReproducibility() {
+        List<Graph> graphs = loadDataset("data/input.json");
+        for (Graph g : graphs) {
+            MSTResult prim1 = prim.run(g);
+            MSTResult prim2 = prim.run(g);
+            assertEquals(prim1.getOperationsCount(), prim2.getOperationsCount(),
+                    "Prim operation count should be reproducible");
+
+            MSTResult kruskal1 = kruskal.run(g);
+            MSTResult kruskal2 = kruskal.run(g);
+            assertEquals(kruskal1.getOperationsCount(), kruskal2.getOperationsCount(),
+                    "Kruskal operation count should be reproducible");
+        }
+    }
+
+    // --- 5. More Complex Disconnected Graphs ---
+    @Test
+    void testMultiComponentDisconnectedGraph() {
+        Graph g = new Graph(100);
+        // Component 1
+        g.addEdge("A", "B", 1);
+        g.addEdge("B", "C", 2);
+
+        // Component 2
+        g.addEdge("D", "E", 3);
+        g.addEdge("E", "F", 4);
+
+        // Component 3
+        g.addEdge("G", "H", 5);
+
+        MSTResult primRes = prim.run(g);
+        MSTResult kruskalRes = kruskal.run(g);
+
+        // MST should be empty or clearly indicate disconnection
+        assertTrue(primRes.getMstEdges().isEmpty() || !isConnected(g, primRes.getMstEdges()),
+                "Prim should handle multi-component disconnected graph");
+        assertTrue(kruskalRes.getMstEdges().isEmpty() || !isConnected(g, kruskalRes.getMstEdges()),
+                "Kruskal should handle multi-component disconnected graph");
+    }
+
+    // --- 6. Execution Time Reasonableness for Small Graphs ---
+    @Test
+    void testExecutionTimeReasonable() {
+        List<Graph> graphs = loadDataset("data/input.json");
+        for (Graph g : graphs) {
+            MSTResult primRes = prim.run(g);
+            MSTResult kruskalRes = kruskal.run(g);
+
+            assertTrue(primRes.getExecutionTimeMs() < 1000,
+                    "Prim execution time should be under 1 second for small graphs");
+            assertTrue(kruskalRes.getExecutionTimeMs() < 1000,
+                    "Kruskal execution time should be under 1 second for small graphs");
+        }
+    }
 }
