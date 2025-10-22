@@ -19,7 +19,7 @@
         }
       ],
       "total_cost": 7,
-      "execution_time_ms": 5.5625,
+      "execution_time_ms": 2.783708,
       "operations_count": 7
     },
     "input_stats": {
@@ -45,7 +45,7 @@
         }
       ],
       "total_cost": 7,
-      "execution_time_ms": 0.460875,
+      "execution_time_ms": 0.388833,
       "operations_count": 28
     },
     "graph_id": 1
@@ -75,7 +75,7 @@
         }
       ],
       "total_cost": 16,
-      "execution_time_ms": 0.059667,
+      "execution_time_ms": 0.060875,
       "operations_count": 10
     },
     "input_stats": {
@@ -106,7 +106,7 @@
         }
       ],
       "total_cost": 16,
-      "execution_time_ms": 0.047875,
+      "execution_time_ms": 0.039833,
       "operations_count": 40
     },
     "graph_id": 2
@@ -146,7 +146,7 @@
         }
       ],
       "total_cost": 17,
-      "execution_time_ms": 0.059125,
+      "execution_time_ms": 0.068458,
       "operations_count": 13
     },
     "input_stats": {
@@ -187,7 +187,7 @@
         }
       ],
       "total_cost": 17,
-      "execution_time_ms": 0.038125,
+      "execution_time_ms": 0.041709,
       "operations_count": 50
     },
     "graph_id": 3
@@ -232,7 +232,7 @@
         }
       ],
       "total_cost": 20,
-      "execution_time_ms": 0.054209,
+      "execution_time_ms": 0.062167,
       "operations_count": 15
     },
     "input_stats": {
@@ -278,7 +278,7 @@
         }
       ],
       "total_cost": 20,
-      "execution_time_ms": 0.042667,
+      "execution_time_ms": 0.046667,
       "operations_count": 57
     },
     "graph_id": 4
@@ -328,7 +328,7 @@
         }
       ],
       "total_cost": 27,
-      "execution_time_ms": 0.069958,
+      "execution_time_ms": 0.061125,
       "operations_count": 19
     },
     "input_stats": {
@@ -379,7 +379,7 @@
         }
       ],
       "total_cost": 27,
-      "execution_time_ms": 0.046417,
+      "execution_time_ms": 0.045792,
       "operations_count": 69
     },
     "graph_id": 5
@@ -434,7 +434,7 @@
         }
       ],
       "total_cost": 33,
-      "execution_time_ms": 0.05375,
+      "execution_time_ms": 0.059125,
       "operations_count": 17
     },
     "input_stats": {
@@ -490,7 +490,7 @@
         }
       ],
       "total_cost": 33,
-      "execution_time_ms": 0.047167,
+      "execution_time_ms": 0.050291,
       "operations_count": 66
     },
     "graph_id": 6
@@ -555,7 +555,7 @@
         }
       ],
       "total_cost": 42,
-      "execution_time_ms": 0.064875,
+      "execution_time_ms": 0.066875,
       "operations_count": 21
     },
     "input_stats": {
@@ -621,7 +621,7 @@
         }
       ],
       "total_cost": 42,
-      "execution_time_ms": 0.048834,
+      "execution_time_ms": 0.053875,
       "operations_count": 80
     },
     "graph_id": 7
@@ -696,7 +696,7 @@
         }
       ],
       "total_cost": 57,
-      "execution_time_ms": 0.079917,
+      "execution_time_ms": 0.081208,
       "operations_count": 25
     },
     "input_stats": {
@@ -772,7 +772,7 @@
         }
       ],
       "total_cost": 57,
-      "execution_time_ms": 0.068458,
+      "execution_time_ms": 0.074542,
       "operations_count": 94
     },
     "graph_id": 8
@@ -877,7 +877,7 @@
         }
       ],
       "total_cost": 87,
-      "execution_time_ms": 0.115334,
+      "execution_time_ms": 0.116167,
       "operations_count": 37
     },
     "input_stats": {
@@ -983,7 +983,7 @@
         }
       ],
       "total_cost": 87,
-      "execution_time_ms": 0.066792,
+      "execution_time_ms": 0.102417,
       "operations_count": 129
     },
     "graph_id": 9
@@ -1113,7 +1113,7 @@
         }
       ],
       "total_cost": 116,
-      "execution_time_ms": 0.162,
+      "execution_time_ms": 0.186042,
       "operations_count": 47
     },
     "input_stats": {
@@ -1244,7 +1244,7 @@
         }
       ],
       "total_cost": 116,
-      "execution_time_ms": 0.077291,
+      "execution_time_ms": 0.108291,
       "operations_count": 171
     },
     "graph_id": 10
