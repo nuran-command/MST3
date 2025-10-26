@@ -112,8 +112,8 @@ Graphs are represented with **vertices** _(districts)_ and **edges** _(roads wit
     - Prim → integrates easily with adjacency structures
 
 **Overall Summary:**
-- ✅ Kruskal → slightly faster on small sparse networks
-- ✅ Prim → superior for dense networks and scalable with heaps
+- Kruskal → slightly faster on small sparse networks
+- Prim → superior for dense networks and scalable with heaps
 
 ---
 
@@ -132,4 +132,6 @@ Graphs are represented with **vertices** _(districts)_ and **edges** _(roads wit
 3. Check results in `data/results.csv` and `data/output.json`
 
 ---
+
+**full report is in report package**
 
